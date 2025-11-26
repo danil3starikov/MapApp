@@ -1,16 +1,52 @@
-# map_app
+# MapApp
 
-A new Flutter project.
+## ⚙️ Setup & Installation
 
-## Getting Started
+**1. Clone the repository:**
 
-This project is a starting point for a Flutter application.
+```bash
+git clone https://github.com/danil3starikov/MapApp.git
+cd MapApp
+```
 
-A few resources to get you started if this is your first Flutter project:
+**2. Install dependencies:**
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```bash
+flutter pub get
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**3. Generate Database Code:**
+
+```bash
+dart run build_runner build
+```
+
+-----
+
+## 🔑 Running the App
+
+You must provide your Google Maps API Key when running the app.
+
+### Mac (Terminal)
+
+**1. Export your API key as an environment variable:**
+
+```bash
+export MAPS_API_KEY=your_actual_api_key_here
+```
+
+**2. Run the app passing the key:**
+
+```bash
+flutter run --dart-define=MAPS_API_KEY=$MAPS_API_KEY
+```
+
+## ⚠️ Important Note
+
+Ensure your Google Cloud Console project has the following APIs enabled:
+
+- Maps SDK for Android
+- Maps SDK for iOS
+- Places API
+
+
