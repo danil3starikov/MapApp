@@ -49,7 +49,9 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
-        manifestPlaceholders = [MAPS_API_KEY: mapsApiKey]
+        manifestPlaceholders = [
+            MAPS_API_KEY: project.findProperty('dart.env.MAPS_API_KEY') ?: ''
+        ]
     }
 
     buildTypes {
