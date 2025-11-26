@@ -69,9 +69,9 @@ class _HomeViewState extends State<HomeView> {
 
     // Fetch coordinates if placeId exists
     if (prediction.placeId != null) {
-      await NetworkUtility.fetchPlaceDetails(
-        prediction.placeId!,
-      ).then((latLng) {
+      await NetworkUtility.fetchPlaceDetails(prediction.placeId!).then((
+        latLng,
+      ) {
         setState(() {
           if (isSearchingForStart) {
             startLatLng = latLng;
@@ -97,6 +97,10 @@ class _HomeViewState extends State<HomeView> {
       final tempLocation = selectedStartLocation;
       selectedStartLocation = selectedDestLocation;
       selectedDestLocation = tempLocation;
+
+      final tempLatLng = startLatLng;
+      startLatLng = destLatLng;
+      destLatLng = tempLatLng;
     });
   }
 
@@ -107,6 +111,11 @@ class _HomeViewState extends State<HomeView> {
   }
 
   void onTextFieldChanged(String value, bool isStart) {
+    setState(() {
+      isSearchingForStart = isStart;
+      placePredictions.clear();
+    });
+
     NetworkUtility.fetchSuggestions(value, isStart).then((predictions) {
       setState(() {
         placePredictions = predictions ?? [];

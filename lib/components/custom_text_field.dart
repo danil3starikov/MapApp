@@ -33,6 +33,7 @@ class CustomTextField extends StatelessWidget {
             flex: 6,
             child: TextField(
               controller: controller,
+              autocorrect: false,
               onTap: onTap,
               onChanged: onChanged,
               textAlignVertical: TextAlignVertical.center,
