@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -5,7 +7,7 @@ plugins {
 }
 
 val mapsApiKey: String = run {
-    val mapsProperties = java.util.Properties()
+    val mapsProperties = Properties()
     val localMapsPropertiesFile = rootProject.file("local_maps.properties")
     
     if (localMapsPropertiesFile.exists()) {
@@ -40,8 +42,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+        }
     }
 
     defaultConfig {
